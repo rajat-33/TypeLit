@@ -25,6 +25,7 @@ input.disabled=true;
 
 let i;
 
+
 wordCounter = (str)=>{
     let count = str.split(" ").length;
     return count;
@@ -48,7 +49,7 @@ playGame = () =>{
     i=0;
     document.getElementById('pressEnterMessage1').innerText="Or press Enter";
     input.disabled=false;
-    input.focus();
+    input.focus();              //get the i/o focus on input2
     input.value="";
     res.innerText = "";
     let r = Math.floor(Math.random()*setOfWords.length);
@@ -65,7 +66,7 @@ endGame = ()=>{
     endTime = date.getTime();
     let totalTime = (endTime-startTime)/1000;
     let totalInput = input.value;
-    console.log(totalInput);
+    // console.log(totalInput);
     let wpm, correctP, totalWords;
     if(totalInput == "")
     {
@@ -78,7 +79,7 @@ endGame = ()=>{
         totalWords = wordCounter(totalInput);
         wpm = Math.round((totalWords/totalTime)*60);
         let correctWords = compareWords(msg.innerText, totalInput);
-        console.log("correct words : "+correctWords);
+        // console.log("correct words : "+correctWords);
         let errorP = Math.round(((totalWords-correctWords)/totalWords)*100);
         correctP = Math.round((correctWords/totalWords)*100);
     }
@@ -106,8 +107,8 @@ btn.addEventListener('click', function(){
 input.addEventListener("keydown", function(event){
     
     let x=event.key;
-    console.log(x);
-    if(x=="Shift" || x=="CapsLock")
+    // console.log(x);
+    if(x=="Shift" || x=="CapsLock" || x=="ArrowLeft" || x=="ArrowRight")
     {
         
     }
@@ -117,17 +118,14 @@ input.addEventListener("keydown", function(event){
     } 
     else if(msg.innerText[i]==x)
     {
-        input.style.color="green";
+        input.style.textShadow="0 0 0 green";
         i++;                        //if correct then only consider the next letters
     }
     else
     {
-        input.style.color="red";
+        input.style.textShadow="0 0 0 red";
     }
-    
-    console.log(i);
 })
-
 
 //Second part for the letter typing
 
@@ -143,9 +141,8 @@ playGame2 = ()=>{
     res2.innerText = "";
     input2.value = "";
     input2.disabled = false;
-    input2.focus();
+    input2.focus();          //get the i/o focus on input2
     btn2.innerText = "Done";
-    console.log("im inside the playgame function");
     let rand = Math.floor(Math.random()*26);
     msg2.innerText = setOfLetters[rand]; 
 }
@@ -168,15 +165,15 @@ endGame2 = () =>{
 
 input2.addEventListener('keydown', function(event){
     let x = event.key;
-    console.log(x);
+    // console.log(x);
     if(x==msg2.innerText[0])
     {
-        input2.style.color="green";
+        input2.style.textShadow="0 0 0 green";
         playGame2();
     }
     else
     {
-        input2.style.color="red";
+        input2.style.textShadow="0 0 0 red";
         playGame2();
     }
 })

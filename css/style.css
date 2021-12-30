@@ -26,22 +26,42 @@
     padding: 20px;
 }
 
-#innerDiv div{
+#messageContainer1{
+    height: 150px;
+}
+
+#messageContainer2{
+    height: 45px;
+}
+
+#tips{
     margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#tips div{
+    margin: 0px 30px;
     display:inline-block;
     position: relative;
     height: 75px;
     width: 250px;
     padding: 10px;
-    text-align: center;
-    justify-content: center;
     border: 1px groove white;
+}
+
+#pressEnterMessage1{
+    position: absolute;
+    margin: 10px 20px;
 }
 
 #innerDiv #keyboard{
     width: 600px;
-    height: 250px;
+    height: 200px;
     border-width: 0px;
+    margin:0px;
 }
 
 #innerDiv #keyboard::before{
@@ -62,11 +82,16 @@
     background-color: rgb(14, 8, 22);
     color: white;
     font-family: 'Cairo', sans-serif;
+    font-weight:bold;
     border: 1px groove white;
+    color: transparent;                              /*to hide the blinking cursor */
+    text-shadow : 0 0 0 rgb(255, 255, 255);
+    color:rgb(255, 0, 0)(0,0,0);
 }
 
 #input:focus, #input2:focus{
     cursor:none;
+    outline : none;
 }
 
 #result, #result2{
