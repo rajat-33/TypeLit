@@ -30,7 +30,7 @@
     margin: 20px;
     display:inline-block;
     position: relative;
-    height: 100px;
+    height: 75px;
     width: 250px;
     padding: 10px;
     text-align: center;
@@ -41,7 +41,7 @@
 #innerDiv #keyboard{
     width: 600px;
     height: 250px;
-    border: 0px solid white;
+    border-width: 0px;
 }
 
 #innerDiv #keyboard::before{

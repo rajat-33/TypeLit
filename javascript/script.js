@@ -1,16 +1,20 @@
-const setOfWords = ["India, officially the Republic of India, is a country in South Asia. It is the seventh-largest country by area, the second-most populous country, and the most populous democracy in the world",
-"Japan is an island country in East Asia, located in the northwest Pacific Ocean. It is bordered on the west by the Sea of Japan, and extends from the Sea of Okhotsk in the north toward the East China Sea and Taiwan in the south.",
-"As of 2021, the United States and China would occupy the first two places in both methods' gdp ranking",
-"Having been originated in India, Yoga is largely followed in the West too as it has amazing health benefits. It can work wonders for the body in terms of shape, weight loss, balanced mind and breathing among others.",
-"Anulom vilom is a specific type of controlled breathing in the practice of yoga. It involves holding one nostril closed while inhaling, then holding the other nostril closed while exhaling. The process is then reversed and repeated.",
-"Your stomach acid is strong enough to dissolve metal.",
-"USA based IEEE has proved what has been a century-old suspicion in the world scientific community that the pioneer of Wireless communication was Prof. Jagdeesh Bose and not Marconi. ",
-"According to the Gemological Institute of America, up until 1896, India was the only source for diamonds to the world.",
-"The Indian Army is the 4th largest standing Army in the world after the US, Russia and China.",
+//first part for text typing
+
+const setOfWords = [`India, officially the Republic of India, is a country in South Asia. It is the seventh-largest country by area, the second-most populous country, and the most populous democracy in the world`,
+`Japan is an island country in East Asia, located in the northwest Pacific Ocean. It is bordered on the west by the Sea of Japan, and extends from the Sea of Okhotsk in the north toward the East China Sea and Taiwan in the south.`,
+`As of 2021, the United States and China would occupy the first two places in both methods' gdp ranking`,
+`Having been originated in India, Yoga is largely followed in the West too as it has amazing health benefits. It can work wonders for the body in terms of shape, weight loss, balanced mind and breathing among others.`,
+`Anulom vilom is a specific type of controlled breathing in the practice of yoga. It involves holding one nostril closed while inhaling, then holding the other nostril closed while exhaling. The process is then reversed and repeated.`,
+`Your stomach acid is strong enough to dissolve metal.`,
+`USA based IEEE has proved what has been a century-old suspicion in the world scientific community that the pioneer of Wireless communication was Prof. Jagdeesh Bose and not Marconi.`,
+`According to the Gemological Institute of America, up until 1896, India was the only source for diamonds to the world.`,
+`The Indian Army is the 4th largest standing Army in the world after the US, Russia and China.`,
 `The Gorkha regiment is one of the oldest regiments of the Indian Army and has impressed leaders worldwide with their combat ability. Adolf Hitler once reportedly said, "If I had Gurkhas, no armies in the world would defeat me."`,
 `The Indian army controls the highest battlefield in the world, the Siachen Glacier, which is 5000 metres above sea level.`,
-"The number of start-ups in Bangalore rivals those in the global top tech cities, with San Francisco research firm Compass rating it the second fastest-growing start-up ecosystem in the world, after Berlin.",
-"API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other."];
+`The number of start-ups in Bangalore rivals those in the global top tech cities, with San Francisco research firm Compass rating it the second fastest-growing start-up ecosystem in the world, after Berlin.`,
+`API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other.`,
+`Indian cuisine consists of a variety of regional and traditional cuisines native to the Indian subcontinent. Given the diversity in soil, climate, culture, ethnic groups, and occupations, these cuisines vary substantially and use locally available spices, herbs, vegetables, and fruits.`, 
+`It has been 50 years since the Indo-Pak war of 1971, but the memories of the events remain etched in the hearts of the war heroes who fought for the liberation of Bangladesh. Pakistan was defeated and forced to publicly surrender to India, the largest military surrender since the second World War`];
 
 const msg = document.getElementById('message');
 const input = document.getElementById('input');
@@ -31,18 +35,6 @@ compareWords = (str1, str2)=>{
     let c = 0, i = 0;
     let words1 = str1.split(" ");
     let words2 = str2.split(" ");
-    // for(i=0;i<str1.length;i++)
-    // {
-    //     if(str1[i] == str2[i])
-    //     {
-    //         c++;
-    //     }
-    //     else
-    //     {
-    //         str2[i] = '_';
-    //     }
-    // }
-    // console.log(str2);
     words1.forEach(function(item, index) {
         if(item == words2[index])
         {
@@ -54,6 +46,7 @@ compareWords = (str1, str2)=>{
 
 playGame = () =>{
     i=0;
+    document.getElementById('pressEnterMessage1').innerText="Or press Enter";
     input.disabled=false;
     input.focus();
     input.value="";
@@ -93,6 +86,7 @@ endGame = ()=>{
     res.innerText = "WPM: "+wpm+" Acurarcy: "+correctP+"%";
     btn.innerText = "Start";
     input.style.backgroundColor="black";
+    document.getElementById('pressEnterMessage1').innerText="";
 }
 
 
@@ -124,7 +118,7 @@ input.addEventListener("keydown", function(event){
     else if(msg.innerText[i]==x)
     {
         input.style.color="green";
-        i++;
+        i++;                        //if correct then only consider the next letters
     }
     else
     {
@@ -134,6 +128,8 @@ input.addEventListener("keydown", function(event){
     console.log(i);
 })
 
+
+//Second part for the letter typing
 
 setOfLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
