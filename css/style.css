@@ -1,0 +1,87 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
+#mainh1, #mainh12{
+    color: #a8b5ff;
+}
+
+#mainDiv{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgb(0, 0, 0);
+}
+
+#innerDiv, #innerDiv2{
+    background-color: rgb(7, 25, 42);
+    padding: 20px;
+}
+
+#innerDiv div{
+    margin: 20px;
+    display:inline-block;
+    position: relative;
+    height: 100px;
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    border: 1px groove white;
+}
+
+#innerDiv #keyboard{
+    width: 600px;
+    height: 250px;
+    border: 0px solid white;
+}
+
+#innerDiv #keyboard::before{
+    content: "";
+    background: url(/images/keyboard.png) no-repeat center center/contain;
+    position: absolute;
+    top:10px;
+    left:0px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+}
+
+#input, #input2{
+    border-radius: 10px 10px 0px 0px;
+    font-size: 22px;
+    padding: 10px;
+    background-color: rgb(14, 8, 22);
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    border: 1px groove white;
+}
+
+#input:focus, #input2:focus{
+    cursor:none;
+}
+
+#result, #result2{
+    color: rgb(255, 0, 0);
+}
+
+#btn, #btn2{
+    padding: 2px 30px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: medium;
+    cursor:pointer;
+}
+
+#copyright a{
+    text-decoration: none;
+}
