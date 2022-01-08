@@ -25,6 +25,89 @@ input.disabled=true;
 
 let i;
 
+let keyMap = new Map();
+
+    keyMap.set("`", "key-1");
+    keyMap.set("1","key-2");
+    keyMap.set("2","key-3");
+    keyMap.set("3","key-4");
+    keyMap.set("4","key-5");
+    keyMap.set("5","key-6");
+    keyMap.set("6","key-7");
+    keyMap.set("7","key-8");
+    keyMap.set("8","key-9");
+    keyMap.set("9","key-10");
+    keyMap.set("0","key-11");
+    keyMap.set("-","key-12");
+    keyMap.set("=","key-13");
+    keyMap.set("Backspace","key-14");
+    keyMap.set("Tab","key1");
+    keyMap.set("Q","key2");
+    keyMap.set("W","key3");
+    keyMap.set("E","key4");
+    keyMap.set("R","key5");
+    keyMap.set("T","key6");
+    keyMap.set("Y","key7");
+    keyMap.set("U","key8");
+    keyMap.set("I","key9");
+    keyMap.set("O","key10");
+    keyMap.set("P","key11");
+    keyMap.set("q","key2");
+    keyMap.set("w","key3");
+    keyMap.set("e","key4");
+    keyMap.set("r","key5");
+    keyMap.set("t","key6");
+    keyMap.set("y","key7");
+    keyMap.set("u","key8");
+    keyMap.set("i","key9");
+    keyMap.set("o","key10");
+    keyMap.set("p","key11");
+    keyMap.set("[","key12");
+    keyMap.set("]","key13");
+    keyMap.set("\"","key14");               //problem
+    keyMap.set("CapsLock", "key15");
+    keyMap.set("A","key16");
+    keyMap.set("S","key17");
+    keyMap.set("D","key18");
+    keyMap.set("F","key19");
+    keyMap.set("G","key20");
+    keyMap.set("H","key21");
+    keyMap.set("J","key22");
+    keyMap.set("K","key23");
+    keyMap.set("L","key24");
+    keyMap.set("a","key16");
+    keyMap.set("s","key17");
+    keyMap.set("d","key18");
+    keyMap.set("f","key19");
+    keyMap.set("g","key20");
+    keyMap.set("h","key21");
+    keyMap.set("j","key22");
+    keyMap.set("k","key23");
+    keyMap.set("l","key24");
+    keyMap.set(";","key25");
+    keyMap.set("'","key26");
+    keyMap.set("Enter", "key27");
+    keyMap.set("Shift","key28");
+    keyMap.set("Z","key29");
+    keyMap.set("X","key30");
+    keyMap.set("C","key31");
+    keyMap.set("V","key32");
+    keyMap.set("B","key33");
+    keyMap.set("N","key34");
+    keyMap.set("M","key35");
+    keyMap.set("z","key29");
+    keyMap.set("x","key30");
+    keyMap.set("c","key31");
+    keyMap.set("v","key32");
+    keyMap.set("b","key33");
+    keyMap.set("n","key34");
+    keyMap.set("m","key35");
+    keyMap.set(",","key36");
+    keyMap.set(".","key37");
+    keyMap.set("/","key38");
+    keyMap.set("Shift","key39");
+    keyMap.set(" ","key40");
+
 
 wordCounter = (str)=>{
     let count = str.split(" ").length;
@@ -46,6 +129,7 @@ compareWords = (str1, str2)=>{
 }
 
 playGame = () =>{
+
     i=0;
     document.getElementById('pressEnterMessage1').innerText="Or press Enter";
     input.disabled=false;
@@ -84,10 +168,11 @@ endGame = ()=>{
         correctP = Math.round((correctWords/totalWords)*100);
     }
     
-    res.innerText = "WPM: "+wpm+" Acurarcy: "+correctP+"%";
+    res.innerText = "WPM: "+wpm+" Accuracy: "+correctP+"%";
     btn.innerText = "Start";
     input.style.backgroundColor="black";
     document.getElementById('pressEnterMessage1').innerText="";
+    document.getElementById(keyMap.get(prevKey)).style.backgroundColor="black"; //reset the last key pressed
 }
 
 
@@ -95,6 +180,7 @@ btn.addEventListener('click', function(){
     
     if(this.innerText=='Start')
     {
+        //get focus
         input.focus();
         playGame();
     }
@@ -104,18 +190,42 @@ btn.addEventListener('click', function(){
     }
 })
 
+ function glowKeys(x, prev){
+    if(keyMap.has(prev) && prev!="-1")
+    {
+        document.getElementById(keyMap.get(prev)).style.backgroundColor = "black";
+        document.getElementById(keyMap.get(prev)).style.boxShadow = "4px 4px 4px 1px black";
+    }
+    if(keyMap.has(x))
+    {
+        document.getElementById(keyMap.get(x)).style.backgroundColor = "blue";
+        document.getElementById(keyMap.get(x)).style.boxShadow = "2px 2px 2px 1px black";
+    }
+}
+
+let prevKey="-1";
 input.addEventListener("keydown", function(event){
     
     let x=event.key;
-    // console.log(x);
-    if(x=="Shift" || x=="CapsLock" || x=="ArrowLeft" || x=="ArrowRight")
+    glowKeys(x, prevKey);
+    // console.log("We are looking for"+msg.innerText[i]+" -> "+x);
+    
+    prevKey=x; //ref to change the prev key color back to black
+    if(x=="Shift" || x=="CapsLock" || x=="ArrowLeft" || x=="ArrowRight" || x=='Tab')
     {
         
     }
     else if(x=="Enter")
     {
         endGame();
-    } 
+    }
+    else if(x=="Backspace")
+    {
+        if(i>0)
+        {
+            i--;
+        }
+    }
     else if(msg.innerText[i]==x)
     {
         input.style.textShadow="0 0 0 green";
@@ -124,6 +234,7 @@ input.addEventListener("keydown", function(event){
     else
     {
         input.style.textShadow="0 0 0 red";
+        i++;
     }
 })
 
@@ -148,37 +259,52 @@ playGame2 = ()=>{
 }
 
 endGame2 = () =>{
+    let acc = 0;
+    if(correctLetters != 0)
+    {
+        acc=(correctLetters/totalLetters)*100;
+    }
+    correctLetters=0;
+    totalLetters=0;
+    res2.innerText="Accuracy: "+acc+"%";
     btn2.innerText = "Start";
-    let l1 = msg2.innerText;
-    let l2 = input2.value;
-    if(l1 == l2)
-    {
-        res2.innerText = "Correct!";
-        res2.style.color = "green";
-    }
-    else
-    {
-        res2.innerText = "Incorrect!";
-        res2.style.color = "red";
-    }
+    input2.value="";
+    msg2.innerText="";
 }
 
+let prevKey2=-1, totalLetters=0, correctLetters=0;
 input2.addEventListener('keydown', function(event){
     let x = event.key;
-    // console.log(x);
-    if(x==msg2.innerText[0])
+
+    glowKeys(x, prevKey2);
+    if(x == 'Enter')
+    {
+        endGame2();
+    }
+    else if(x==msg2.innerText[0])
     {
         input2.style.textShadow="0 0 0 green";
+        totalLetters++;
+        correctLetters++;
         playGame2();
     }
     else
     {
         input2.style.textShadow="0 0 0 red";
+        totalLetters++;
         playGame2();
     }
+    prevKey2=x;
 })
 
 btn2.addEventListener('click', function(){
+
+    //reset the last key pressed in the prev iteration to initial appearence
+    if(prevKey2!="-1") 
+    {
+        document.getElementById(keyMap.get(prevKey2)).style.backgroundColor= "black";
+    }
+
     if(this.innerText == 'Start')
     {
         playGame2();

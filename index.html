@@ -14,6 +14,13 @@
     
 </head>
 <body>
+    <section id="header"></section>
+
+    <div id="nav">
+        <a id="pointToHead" href="#header">&uarr;</a>
+        <a id="pointToFoot" href="#footer">&darr;</a>
+    </div>
+
     <div id="mainDiv">
         <div id="innerDiv">
             <h1 id = "mainh1">Text</h1>
@@ -22,18 +29,79 @@
                 <h3 id="result"></h3>
             </div>
             <br>
-            <textarea name="userInput" id="input" cols="80" rows="2" class="rq-form-element"></textarea>
-            <br>
-            <button id = "btn">Start</button>
-            <span id="pressEnterMessage1"></span>
-            <br>
-            <section id="tips">
-                <div>Left-hand fingers should be placed over the A, S, D, and F keys</div>
-                <div id="keyboard"></div>
-                <div>Right-hand fingers should be placed over the J, K, L, and ; keys</div>
-            </section>
+            <div id="getInput">
+                <textarea name="userInput" id="input" cols="80" rows="2" class="rq-form-element"></textarea>
+                <div>
+                    <button id = "btn">Start</button>
+                    <span id="pressEnterMessage1"></span>
+                </div>
+            </div>
             
+            <div id="interaction">
+                <div class="tips">Left-hand fingers should be placed over the A, S, D, and F keys</div>
+
+                <div id="kb" class="kb">
+                    <div class="keys" id="key-1">`</div>
+                    <div class="keys" id="key-2">1</div>
+                    <div class="keys" id="key-3">2</div>
+                    <div class="keys" id="key-4">3</div>
+                    <div class="keys" id="key-5">4</div>
+                    <div class="keys" id="key-6">5</div>
+                    <div class="keys" id="key-7">6</div>
+                    <div class="keys" id="key-8">7</div>
+                    <div class="keys" id="key-9">8</div>
+                    <div class="keys" id="key-10">9</div>
+                    <div class="keys" id="key-11">0</div>
+                    <div class="keys" id="key-12">-</div>
+                    <div class="keys" id="key-13">=</div>
+                    <div class="keys" id="key-14">Backspace</div>
+                    <div class="keys" id="key1">Tab</div>
+                    <div class="keys" id="key2">Q</div>
+                    <div class="keys" id="key3">W</div>
+                    <div class="keys" id="key4">E</div>
+                    <div class="keys" id="key5">R</div>
+                    <div class="keys" id="key6">T</div>
+                    <div class="keys" id="key7">Y</div>
+                    <div class="keys" id="key8">U</div>
+                    <div class="keys" id="key9">I</div>
+                    <div class="keys" id="key10">O</div>
+                    <div class="keys" id="key11">P</div>
+                    <div class="keys" id="key12">[</div>
+                    <div class="keys" id="key13">]</div>
+                    <div class="keys" id="key14">\</div>
+                    <div class="keys" id="key15">Caps Lock</div>
+                    <div class="keys" id="key16">A</div>
+                    <div class="keys" id="key17">S</div>
+                    <div class="keys" id="key18">D</div>
+                    <div class="keys" id="key19"><div class="notchKey">F</div></div>
+                    <div class="keys" id="key20">G</div>
+                    <div class="keys" id="key21">H</div>
+                    <div class="keys" id="key22"><div class="notchKey">J</div></div>
+                    <div class="keys" id="key23">K</div>
+                    <div class="keys" id="key24">L</div>
+                    <div class="keys" id="key25">;</div>
+                    <div class="keys" id="key26">'</div>
+                    <div class="keys" id="key27">Enter</div>
+                    <div class="keys" id="key28">Shift</div>
+                    <div class="keys" id="key29">Z</div>
+                    <div class="keys" id="key30">X</div>
+                    <div class="keys" id="key31">C</div>
+                    <div class="keys" id="key32">V</div>
+                    <div class="keys" id="key33">B</div>
+                    <div class="keys" id="key34">N</div>
+                    <div class="keys" id="key35">M</div>
+                    <div class="keys" id="key36">,</div>
+                    <div class="keys" id="key37">.</div>
+                    <div class="keys" id="key38">/</div>
+                    <div class="keys" id="key39">Shift</div>
+                    <div class="keys" id="key40"></div>
+                </div>
+
+                <div class="tips">Right-hand fingers should be placed over the J, K, L, and ; keys</div>
+            </div>    
         </div>
+
+
         <div id="innerDiv2">
             <h1 id = "mainh12">Letter</h1>
             <div id="messageContainer2">
@@ -47,6 +115,9 @@
         </div>
         <div id="copyright"><a href="https://www.linkedin.com/in/rajat-agarwal-04b6b4194" target="_blank">&copy Rajat Agarwal. All rights reserved.</a></div>
     </div>
+
+    <section id="footer"></section>
+
     <script src="./javascript/script.js"></script>
 </body>
 </html>
